@@ -1,0 +1,18 @@
+.ant-tabs-nav-wrap{
+    
+    height: 40px;
+    
+  
+
+}
+.ant-tabs-nav-list{
+    transform: translate(0px, 0px);
+    height: 40px;
+     
+      
+}
+.ant-tabs-tab{
+     transform: translate(0px, 0px);
+    height: 40px;
+    
+}
