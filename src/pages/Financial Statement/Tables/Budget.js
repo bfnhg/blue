@@ -15,6 +15,7 @@ import {
   Popconfirm,
 } from "antd";
 import axios from "axios";
+import "../tabscard.css";
 import { CompanyContext } from "../../../contexts/CompanyContext";
 const { Text } = Typography;
 const { TextArea } = Input;
@@ -61,7 +62,7 @@ function Budget(props) {
   const columnsbalanceBudget = [
     {
       title: <h1 style={{ textAlign: "center" }}>Year</h1>,
-      width: 140,
+      width: 120,
       dataIndex: "year",
       aligne: "center",
       //   key: "year",
@@ -73,7 +74,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Janvier</h1>,
       dataIndex: "montant",
       //  key: "2",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -90,7 +91,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}> Février </h1>,
       dataIndex: "fevrierbudget",
       //  key: "3",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -107,7 +108,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Mars</h1>,
       dataIndex: "Marsbudget",
       key: "4",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -124,7 +125,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Avril</h1>,
       dataIndex: "avrilbudget",
       key: "5",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -141,7 +142,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Mai</h1>,
       dataIndex: "maibudget",
       key: "6",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -158,7 +159,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Juin</h1>,
       dataIndex: "Juinbudget",
       key: "7",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -175,7 +176,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Juillet</h1>,
       dataIndex: "juilletbudget",
       key: "8",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -192,7 +193,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Août</h1>,
       dataIndex: "aoutbudget",
       key: "9",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -209,7 +210,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Septembre</h1>,
       dataIndex: "septembrebudget",
       key: "10",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -226,7 +227,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Octobre</h1>,
       dataIndex: "octobrebudget",
       key: "11",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -243,7 +244,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}> Novembre</h1>,
       dataIndex: "novemberbudget",
       key: "12",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -260,7 +261,7 @@ function Budget(props) {
       title: <h1 style={{ textAlign: "center" }}>Décembre</h1>,
       dataIndex: "decembrebudget",
       key: "12",
-      width: 160,
+      width: 120,
       render: (text, record) => {
         return (
           <Input
@@ -275,7 +276,8 @@ function Budget(props) {
     },
     {
       title: <h1 style={{ textAlign: "center" }}>Total $</h1>,
-      width: 180,
+      width: 120,
+      // fixed: "right",
       render: (_, record) => {
         //  <h3 style={{ textAlign: "right" }}> {record.totalBudget}</h3>
 
@@ -293,7 +295,7 @@ function Budget(props) {
               record.budgets[8] +
               record.budgets[9] +
               record.budgets[10] +
-             record.budgets[11]}
+              record.budgets[11]}
           </h3>
         );
       },
@@ -301,8 +303,8 @@ function Budget(props) {
     {
       title: <h1>Action</h1>,
       key: "operation",
-      fixed: "left",
-      width: 180,
+      // fixed: "right",
+      width: 120,
       render: (_, record) => (
         <>
           <Button
@@ -406,14 +408,14 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={4}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 100 }}>
                       {totalbudget}
                     </h6>
                   </Text>
                 </Table.Summary.Cell>
                 <Table.Summary.Cell index={4}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 100 }}>
                       {console.log(props.liabilityBudgets)}
                       {totalfevrierbudget}
                     </h6>
@@ -429,7 +431,7 @@ function Budget(props) {
                 </Table.Summary.Cell>
                 <Table.Summary.Cell index={6}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 100 }}>
                       {totalavrilbudget}
                     </h6>
                   </Text>
@@ -437,7 +439,7 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={7}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 100 }}>
                       {console.log(totalmaibudget)}
                       {totalmaibudget}
                     </h6>
@@ -446,7 +448,7 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={8}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 100 }}>
                       {totalJuinbudget}
                     </h6>
                   </Text>
@@ -469,7 +471,7 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={10}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 120 }}>
                       {totalseptembrebudget}
                     </h6>
                   </Text>
@@ -477,14 +479,14 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={10}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 120 }}>
                       {totaloctobrebudget}
                     </h6>
                   </Text>
                 </Table.Summary.Cell>
                 <Table.Summary.Cell index={10}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 120 }}>
                       {totalnovemberbudget}
                     </h6>
                   </Text>
@@ -492,14 +494,14 @@ function Budget(props) {
 
                 <Table.Summary.Cell index={10}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 120 }}>
                       {totaldecembrebudget}
                     </h6>
                   </Text>
                 </Table.Summary.Cell>
                 <Table.Summary.Cell index={10}>
                   <Text>
-                    <h6 style={{ textAlign: "right", width: 140 }}>
+                    <h6 style={{ textAlign: "right", width: 120 }}>
                       {totaltotal}
                     </h6>
                   </Text>

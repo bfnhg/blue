@@ -18,8 +18,10 @@ import {
   Input,
   Typography,
   Space,
+  Col,
   Row,
   Descriptions,
+  Card,
 } from "antd";
 const onChangee = (date, dateString) => {
   console.log(date, dateString);
@@ -74,7 +76,7 @@ function Liability() {
     getLiabilities();
   }, [Company.id, year]);
   const onChangeyear = (date, dateString) => {
-    setliabilities(null);
+    setliabilities();
     console.log(date, dateString);
     setYear(dateString);
   };
@@ -94,11 +96,7 @@ function Liability() {
     {
       title: "Class",
       align: "center",
-      render: (_, record) => (
-        <div style={{ textAlign: "left" }}>
-          Liability
-        </div>
-      ),
+      render: (_, record) => <div style={{ textAlign: "left" }}>Liability</div>,
     },
     {
       title: "Category",
@@ -172,60 +170,109 @@ function Liability() {
     }
   };
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}> Liabilities for {Company.name}</h1>
-      <br></br>
+    <Card>
       <div>
-        <span>
-          <DatePicker
-            name="year"
-            picker="year"
-            placeholder="Selected Year"
-            style={{ width: 200, height: 35 }}
-            onChange={onChangeyear}
-          />
-        </span>
+        <h1 style={{ textAlign: "center" }}> Liabilities for {Company.name}</h1>
+        <br></br>
+        {/* <div>
+          
+            <DatePicker
+              name="year"
+              picker="year"
+              placeholder="Selected Year"
+              style={{ width: 200, height: 35 }}
+              onChange={onChangeyear}
+            />
+         
 
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          <Button
-            className="Create-button"
-            type="primary"
+          <div
             style={{
               textAlign: "right",
             }}
           >
-            Upload the Reals
-          </Button>
-
-          <Link
-            to={{
-              pathname: `/summary`,
-            }}
-          >
-            
             <Button
               className="Create-button"
               type="primary"
               style={{
                 textAlign: "right",
-                marginLeft: "2rem",
               }}
-              // onClick={() => setOpen(true)}
             >
-              Summary
-             
+              Upload the Reals
             </Button>
-          </Link>
+
+            <Link
+              to={{
+                pathname: `/summary`,
+              }}
+            >
+              <Button
+                className="Create-button"
+                type="primary"
+                style={{
+                  textAlign: "right",
+                  marginLeft: "2rem",
+                }}
+                // onClick={() => setOpen(true)}
+              >
+                Summary
+              </Button>
+            </Link>
+          </div>
+        </div> */}
+
+        <Row>
+          <Col span={8}>
+            <DatePicker
+              name="year"
+              picker="year"
+              placeholder="Selected Year"
+              style={{ width: 200, height: 35 }}
+              onChange={onChangeyear}
+            />
+          </Col>
+          <Col span={6} offset={10}>
+            <Space
+              style={{
+                // display: 'flex',
+                marginBottom: 8,
+              }}
+            >
+              <Link
+                to={{
+                  pathname: `/summary`,
+                }}
+              >
+                <Button
+                  className="Create-button"
+                  type="primary"
+                  style={{
+                    textAlign: "right",
+                    marginLeft: "2rem",
+                  }}
+                  // onClick={() => setOpen(true)}
+                >
+                  Summary
+                </Button>
+
+                <Button
+                  className="Create-button"
+                  type="primary"
+                  style={{
+                    textAlign: "right",
+                    marginLeft: "2rem",
+                  }}
+                >
+                  Upload the Reals
+                </Button>
+              </Link>
+            </Space>
+          </Col>
+        </Row>
+        <div>
+          <Table columns={columns} dataSource={liabilities} bordered />
         </div>
       </div>
-      <div>
-        <Table columns={columns} dataSource={liabilities} bordered />
-      </div>
-    </div>
+    </Card>
   );
 }
 

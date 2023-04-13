@@ -77,7 +77,7 @@ function LiabilityDetail() {
     getLiability();
     getReals();
     getPerformance();
-    getStatementClass();
+    // getStatementClass();
     getHypothesis();
     },[Company.id]);
 
@@ -208,7 +208,7 @@ function LiabilityDetail() {
 
   useEffect(() => {
     getLiability();
-    getStatementClass();
+    // getStatementClass();
     handleclass();
     getHypothesis();
     console.log(liability);
@@ -235,23 +235,27 @@ function LiabilityDetail() {
       .then((res) => {
         console.log(res);
         setStatementCategory(res.data);
+        console.log(res);
+        console.log("fllmfmf");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const getStatementClass = async () => {
-    await axios
-      .get(`${JSON_API}/FinancialStatementClass`)
-      .then((res) => {
-        console.log(res);
-        setStatementClass(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const getStatementClass = async () => {
+  //   await axios
+  //     .get(`${JSON_API}/FinancialStatementClass`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       setStatementClass(res.data);
+  //       console.log(res);
+  //       console.log("klo");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   //default values
 
   //main Information
@@ -304,7 +308,7 @@ function LiabilityDetail() {
             </Form.Item>
 
             <Form.Item name="category" label="Category">
-              <Select placeholder={Category} onChange={e=>setCategory(e)}>
+              <Select defaultValue={Category} onChange={e=>setCategory(e)}>
                 {statementcategory && statementcategory.map(
                   (e) => e && <Option value={e.id}>{e.label}</Option>
                 )}
@@ -370,7 +374,7 @@ function LiabilityDetail() {
   const items = [
     {
       key: "1",
-      label: <h1 style={{ width: 300, textAlign: "center" }}>Budget</h1>,
+      label: <h1 style={{ width: 350, textAlign: "center" }}>Budget</h1>,
       children: (
         <div>
           {liability.budgets && <Budget liabilityBudgets={liability.financialStatementClass && liability.budgets} onBudgetChange={handleBudgetChange} />}
@@ -380,7 +384,7 @@ function LiabilityDetail() {
 
     {
       key: "2",
-      label: <h1 style={{ width: 300, textAlign: "center" }}>Reals</h1>,
+      label: <h1 style={{ width: 350, textAlign: "center" }}>Reals</h1>,
       children: (
         <div>
           {liability.budgets && <Reals liabilityReals={Real.reals} liabilityBudgets={liability.financialStatementClass && liability.budgets} onRealChange={handleRealChange} />}
@@ -389,7 +393,7 @@ function LiabilityDetail() {
     },
     {
       key: "3",
-      label: <h1 style={{ width: 300, textAlign: "center" }}>Perfermonce</h1>,
+      label: <h1 style={{ width: 350, textAlign: "center" }}>Perfermonce</h1>,
       children: <div>
         {liability.budgets && <Performance liabilityReals={Real.reals} liabilityBudgets={liability.financialStatementClass && liability.budgets} liabilityPerformance={performance.performances}/>}
       </div>,
@@ -401,7 +405,6 @@ function LiabilityDetail() {
       {contextHolder}
       <Card
         style={{
-          width: 900,
           margin: "auto",
           background: "#FFFDFD",
         }}
@@ -447,14 +450,16 @@ function LiabilityDetail() {
             }}
           >
             {" "}
-            <Button
-              type="primary"
-              block
-              onClick={() => setOpen(true)}
-              // onClick={DeleteFinancialStatement}
-            >
-              Delete Statements
-            </Button>
+            <Link to="/liabilities">
+              <Button
+                type="primary"
+                block
+                onClick={() => setOpen(true)}
+                // onClick={DeleteFinancialStatement}
+              >
+                Delete Statements
+              </Button>
+            </Link>
             <Modal
               title="Delete the task"
               showIcon
@@ -485,20 +490,17 @@ function LiabilityDetail() {
           items={itemsForm}
           onChange={onChangee}
         />
+        <div>
+          <Tabs
+            style={{ marginBottom: 32, Color: "#059BFF" }}
+            type="card"
+            centered
+            defaultActiveKey="2"
+            items={items}
+            onChange={onChange}
+          />
+        </div>
       </Card>
-
-      <br></br>
-      <br></br>
-      <div>
-        <Tabs
-          style={{ marginBottom: 32, Color: "#059BFF" }}
-          type="card"
-          centered
-          defaultActiveKey="2"
-          items={items}
-          onChange={onChange}
-        />
-      </div>
     </div>
   );
 }
